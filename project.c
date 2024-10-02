@@ -228,6 +228,41 @@ void supprimer(){
     }
 }
 
+void details(){
+    int id , found = 0;
+    printf("enter l id : ");
+    scanf("%d",&id);
+    id--;
+    getchar();
+    for(int i = 0;i<count;i++){
+        if(i == id){
+            found = 1;
+            printf("Nom: %s\n",arr[i].nom);
+            printf("Prenom: %s\n",arr[i].prenom);
+            printf("Téléphone: %s\n",arr[i].telephone);
+            printf("Âge: %d\n",arr[i].age);
+            switch (arr[i].status)
+            {
+            case 1:
+                printf("Statut: validé\n");
+                break;
+            case 2:
+                printf("Statut: reporté\n");
+                break;
+            case 3 :
+                printf("Statut: annulé \n");
+                break;
+            case 4:
+                printf("Statut: traité\n");
+                break;
+            default:
+                break;
+            }
+            printf("Date de réservation : %d/%d/%d\n",arr[i].date.jour,arr[i].date.mois,arr[i].date.annee);
+        }
+    }
+}
+
 int main()
 {
     int choix;
@@ -238,7 +273,8 @@ int main()
         printf("2. Afficher\n");
         printf("3. modifier\n");
         printf("4. supprimer\n");
-        printf("5. quiter\n");
+        printf("5. details\n");
+        printf("6. quiter\n");
         printf("Veuillez entrer un choix: ");
         scanf("%d", &choix);
         getchar();
@@ -258,13 +294,16 @@ int main()
             supprimer();
             break;
         case 5:
+            details();
+            break;
+        case 6:
             printf("Quitter.\n");
             break;
         default:
             printf("Choix invalide.\n");
             break;
         }
-    } while (choix != 5);
+    } while (choix != 6);
 
     return 0;
 }
