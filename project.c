@@ -289,8 +289,8 @@ void triParNom(){
                 arr[j] = tmp;
             }
         }
-        afficher(); 
     }
+        afficher(); 
 }
 
 void triParStatus() {
@@ -390,9 +390,48 @@ void moyeneAge(){
     printf("moyenne d age et : %d ",somme/count);
 }
 
+void agetranch(){
+    int ag1=0 , ag2=0 , ag3=0;
+    for(int i = 0 ; i<count;i++){
+        if(arr[i].age >= 1 && arr[i].age <=18){
+            ag1++;
+        }
+        else if(arr[i].age >=19 && arr[i].age <=35)
+            ag2++;
+        else{
+            ag3++;
+        }
+    }
+    printf("le nombre des patient d age enter 1 et 18 sont %d  ",ag1);
+    printf("le nombre des patient d age enter 19 et 35 sont %d  ",ag2);
+    printf("le nombre des patient d age 36+ sont %d  ",ag3);
+    
+}
+
+void nbS(){
+    int s1=0 , s2=0 , s3=0 , s4 = 0;
+    for(int i = 0 ; i<count;i++){
+        if(arr[i].status == 1){
+            s1++;
+        }
+        else if(arr[i].status == 2 )
+            s2++;
+        else if(arr[i].status == 3){
+            s3++;
+        }
+        else{
+            s4++;
+        }
+    }
+    printf("le nombre des status valide sont %d  ",s1);
+    printf("le nombre des status report sont %d  ",s2);
+    printf("le nombre des status annuller sont %d  ",s3);
+    printf("le nombre des status traiter sont %d  ",s4);
+}
+
 int main()
 {
-    int choix , choixtri , choixRech , moyenne;
+    int choix , choixtri , choixRech , moyenne , choixSt;
     do
     {
         printf("--- Menu ---\n");
@@ -476,7 +515,32 @@ int main()
             }while(choixRech != 3);
             break;
         case 8:
-            moyeneAge(); //test it
+            do{
+                printf("---statistique---\n");
+                printf("1.moyenne d age des patient \n");
+                printf("2.le nombre des tranche d age \n");
+                printf("3.le nombre total de chaque status \n");
+                printf("4.retourn\n");
+                printf("entrer votre choix ");
+                scanf("%d",&choixSt);
+                switch (choixSt)
+                {
+                case 1:
+                    moyeneAge();
+                    break;
+                case 2:
+                    agetranch();
+                    break;
+                case 3:
+                    nbS();
+                    break;
+                case 4:
+                    break;
+                default:
+                    printf("choix invalid \n");
+                    break;
+                }
+            } while(choixSt != 4);
             break;
         case 9:
             printf("Quitter.\n");
