@@ -52,10 +52,10 @@ void ajouter()
     do
     {
         printf("Choisir le status:\n");
-        printf("1. Valide\n");
+        printf("1. Annuler\n");
         printf("2. Reporté\n");
-        printf("3. Annuler\n");
-        printf("4. Traité\n");
+        printf("3. traite\n");
+        printf("4. valider\n");
         printf("Veuillez choisir (1-4): ");
         scanf("%d", &arr[count].status);
         getchar();
@@ -89,16 +89,16 @@ void afficher()
             switch (arr[i].status)
             {
             case 1:
-                printf("Statut: validé\n");
+                printf("Statut: anuller\n");
                 break;
             case 2:
                 printf("Statut: reporté\n");
                 break;
             case 3 :
-                printf("Statut: annulé \n");
+                printf("Statut: traiter \n");
                 break;
             case 4:
-                printf("Statut: traité\n");
+                printf("Statut: valider\n");
                 break;
             default:
                 break;
@@ -131,7 +131,7 @@ void modifier()
 
             found = 1;
             printf("--- Avant modification ---\n");
-            printf("Nom: %s, Prénom: %s, Téléphone: %s, Age: %d, Status: %d, Date: %02d/%02d/%04d\n",arr[i].nom, 
+            printf("Nom: %s, Prénom: %s, Téléphone: %s, Age: %d, Date: %02d/%02d/%04d\n",arr[i].nom, 
             arr[i].prenom, 
             arr[i].telephone, 
             arr[i].age, 
@@ -139,16 +139,16 @@ void modifier()
             switch (arr[i].status)
             {
             case 1:
-                printf("Statut: validé\n");
+                printf("Statut: annuler\n");
                 break;
             case 2:
                 printf("Statut: reporté\n");
                 break;
             case 3 :
-                printf("Statut: annulé \n");
+                printf("Statut: traiter \n");
                 break;
             case 4:
-                printf("Statut: traité\n");
+                printf("Statut: valider\n");
                 break;
             default:
                 break;
@@ -173,7 +173,7 @@ void modifier()
 
             do
             {
-                printf("les status se sont : ['validé','reporté','annulé','traité']\n");
+                printf("les status se sont : ['annuler','reporté','traiter','valider']\n");
                 printf("Entrer nouveau status (1-4): ");
                 scanf("%d", &arr[id].status);
                 getchar();
@@ -260,16 +260,16 @@ void details(){
             switch (arr[i].status)
             {
             case 1:
-                printf("Statut: validé\n");
+                printf("Statut: anuller\n");
                 break;
             case 2:
                 printf("Statut: reporté\n");
                 break;
             case 3 :
-                printf("Statut: annulé \n");
+                printf("Statut: traiter \n");
                 break;
             case 4:
-                printf("Statut: traité\n");
+                printf("Statut: valider\n");
                 break;
             default:
                 break;
@@ -297,7 +297,7 @@ void triParStatus() {
     reservation tmp;
     for (int i = 0; i < count - 1; i++) {
         for (int j = i + 1; j < count; j++) {
-            if (arr[i].status > arr[j].status) {
+            if (arr[i].status < arr[j].status) {
                 tmp = arr[i];
                 arr[i] = arr[j];
                 arr[j] = tmp;
@@ -323,16 +323,16 @@ void reservNom(){
             switch (arr[i].status)
             {
             case 1:
-                printf("Statut: validé\n");
+                printf("Statut: annuler\n");
                 break;
             case 2:
                 printf("Statut: reporté\n");
                 break;
             case 3 :
-                printf("Statut: annulé \n");
+                printf("Statut: traiter \n");
                 break;
             case 4:
-                printf("Statut: traité\n");
+                printf("Statut: valider\n");
                 break;
             default:
                 break;
@@ -363,16 +363,16 @@ void rechercheId(){
             switch (arr[i].status)
             {
             case 1:
-                printf("Statut: validé\n");
+                printf("Statut: anuler\n");
                 break;
             case 2:
                 printf("Statut: reporté\n");
                 break;
             case 3 :
-                printf("Statut: annulé \n");
+                printf("Statut: traiter \n");
                 break;
             case 4:
-                printf("Statut: traité\n");
+                printf("Statut: valider\n");
                 break;
             default:
                 break;
