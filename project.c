@@ -382,12 +382,12 @@ void rechercheId(){
     }
 }
 
-int moyeneAge(){
-    int somme , moyenne , i;
+void moyeneAge(){
+    int somme = 0 , moyenne , i;
     for(i = 0;i<count;i++){
         somme = somme + arr[i].age;
     }
-    return somme/count;
+    printf("moyenne d age et : %d ",somme/count);
 }
 
 int main()
@@ -476,8 +476,7 @@ int main()
             }while(choixRech != 3);
             break;
         case 8:
-            moyenne = moyeneAge();
-            printf("moyene d age et %d ", moyenne); //test it
+            moyeneAge(); //test it
             break;
         case 9:
             printf("Quitter.\n");
