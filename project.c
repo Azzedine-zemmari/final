@@ -112,9 +112,15 @@ void modifier()
     int id, found = 0;
     char reponse;
 
+
     printf("Entrer l'ID ");
     scanf("%d", &id);
     getchar();
+
+    if (id <= 0 || id > count) {
+    printf("ID invalide.\n");
+    return;
+}
 
     id--; // c est decrementation parceque l utilsateur doit chercher avec 1 mais l indice du tableau debut avec 0
 
@@ -203,6 +209,10 @@ void supprimer(){
     printf("entrer l id : ");
     scanf("%d",&id);
     getchar();
+    if (id <= 0 || id > count) {
+    printf("ID invalide.\n");
+    return;
+}
     id--;
     for(int i = 0;i<count;i++){
         if(id == i){
@@ -232,8 +242,14 @@ void details(){
     int id , found = 0;
     printf("enter l id : ");
     scanf("%d",&id);
-    id--;
     getchar();
+
+    if (id <= 0 || id > count) {
+    printf("ID invalide.\n");
+    return;
+}
+
+    id--;
     for(int i = 0;i<count;i++){
         if(i == id){
             found = 1;
@@ -263,9 +279,120 @@ void details(){
     }
 }
 
+void triParNom(){
+    reservation tmp;
+    for(int i = 0;i<count-1;i++){
+        for(int j = i+1;j<count;j++){
+            if(strcmp(arr[i].nom,arr[j].nom)>0){
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+        afficher(); 
+    }
+}
+
+void triParStatus() {
+    reservation tmp;
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = i + 1; j < count; j++) {
+            if (arr[i].status > arr[j].status) {
+                tmp = arr[i];
+                arr[i] = arr[j];
+                arr[j] = tmp;
+            }
+        }
+    }
+    afficher();  
+}
+
+void reservNom(){
+    char name[20];
+    int found = 0;
+    printf("entrer le nom : ");
+    fgets(name,sizeof(name),stdin);
+    name[strcspn(name,"\n")] = 0;
+    for(int i = 0;i<count;i++){
+        if(strcmp(name,arr[i].nom) == 0){
+            found = 1;
+            printf("Nom: %s\n",arr[i].nom);
+            printf("Prenom: %s\n",arr[i].prenom);
+            printf("Téléphone: %s\n",arr[i].telephone);
+            printf("Âge: %d\n",arr[i].age);
+            switch (arr[i].status)
+            {
+            case 1:
+                printf("Statut: validé\n");
+                break;
+            case 2:
+                printf("Statut: reporté\n");
+                break;
+            case 3 :
+                printf("Statut: annulé \n");
+                break;
+            case 4:
+                printf("Statut: traité\n");
+                break;
+            default:
+                break;
+            }
+            printf("Date de réservation : %d/%d/%d\n",arr[i].date.jour,arr[i].date.mois,arr[i].date.annee);
+        }
+    }
+}
+
+void rechercheId(){
+    int id , found = 0;
+    printf("enter recherche id : ");
+    scanf("%d",&id);
+    getchar();
+
+    if (id <= 0 || id > count) {
+    printf("ID invalide.\n");
+    return;
+}
+    id--;
+    for(int i = 0;i<count;i++){
+        if(id == i){
+            found = 1;
+            printf("Nom: %s\n",arr[i].nom);
+            printf("Prenom: %s\n",arr[i].prenom);
+            printf("Téléphone: %s\n",arr[i].telephone);
+            printf("Âge: %d\n",arr[i].age);
+            switch (arr[i].status)
+            {
+            case 1:
+                printf("Statut: validé\n");
+                break;
+            case 2:
+                printf("Statut: reporté\n");
+                break;
+            case 3 :
+                printf("Statut: annulé \n");
+                break;
+            case 4:
+                printf("Statut: traité\n");
+                break;
+            default:
+                break;
+            }
+            printf("Date de réservation : %d/%d/%d\n",arr[i].date.jour,arr[i].date.mois,arr[i].date.annee);
+        }
+    }
+}
+
+int moyeneAge(){
+    int somme , moyenne , i;
+    for(i = 0;i<count;i++){
+        somme = somme + arr[i].age;
+    }
+    return somme/count;
+}
+
 int main()
 {
-    int choix;
+    int choix , choixtri , choixRech , moyenne;
     do
     {
         printf("--- Menu ---\n");
@@ -274,7 +401,10 @@ int main()
         printf("3. modifier\n");
         printf("4. supprimer\n");
         printf("5. details\n");
-        printf("6. quiter\n");
+        printf("6. le tri\n");
+        printf("7. rechercher\n");
+        printf("8. statistique\n");
+        printf("8. quiter\n");
         printf("Veuillez entrer un choix: ");
         scanf("%d", &choix);
         getchar();
@@ -297,13 +427,68 @@ int main()
             details();
             break;
         case 6:
+            do{
+                printf("---- le tri ----\n");
+                printf("1.tri par nom \n");
+                printf("2.tri par status \n");
+                printf("3.return \n");
+                scanf("%d",&choixtri);
+                getchar();
+                switch (choixtri)
+                {
+                case 1:
+                    triParNom();
+                    break;
+                case 2:
+                    triParStatus();
+                    break;
+                case 3:
+                    break;
+                default:
+                    printf("veuillez entrez un choix exists ");
+                    break;
+                }
+            }while(choixtri != 3);
+            break;
+        case 7:
+            do{
+                printf("---rechercher---\n");
+                printf("1.recherche par nom \n");
+                printf("2.recherche par id \n");
+                printf("3.retour\n");
+                printf("enter le choix : ");
+                scanf("%d",&choixRech);
+                getchar();
+                switch (choixRech)
+                {
+                case 1:
+                    reservNom();
+                    break;
+                case 2:
+                    rechercheId();
+                    break;
+                case 3:
+                    break;
+                default:
+                    printf("choix invalid \n");
+                    break;
+                }
+            }while(choixRech != 3);
+            break;
+        case 8:
+            moyenne = moyeneAge();
+            printf("moyene d age et %d ", moyenne); //test it
+            break;
+        case 9:
             printf("Quitter.\n");
             break;
         default:
             printf("Choix invalide.\n");
             break;
         }
-    } while (choix != 6);
-
+    } while (choix != 9);
     return 0;
 }
+
+//debug the function of tri par status (note)
+//what if the user try to insert 0 (test) and (debug)
