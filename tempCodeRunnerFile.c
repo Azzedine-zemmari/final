@@ -19,7 +19,7 @@ typedef struct
 } reservation;
 
 reservation arr[100];
-int count = 10;
+int count = 0;
 
 void ajouter();
 void afficher();
@@ -419,109 +419,19 @@ void nbS(){
         else if(arr[i].status == 3){
             s3++;
         }
-        else if(arr[i].status == 4){
+        else{
             s4++;
         }
     }
-    printf("le nombre des status annuller sont %d  ",s1);
+    printf("le nombre des status valide sont %d  ",s1);
     printf("le nombre des status report sont %d  ",s2);
-    printf("le nombre des status traiter sont %d  ",s3);
-    printf("le nombre des status valider sont %d  ",s4);
+    printf("le nombre des status annuller sont %d  ",s3);
+    printf("le nombre des status traiter sont %d  ",s4);
 }
 
 int main()
 {
     int choix , choixtri , choixRech , moyenne , choixSt;
-     strcpy(arr[0].nom, "azzedine");
-    strcpy(arr[0].prenom, "zemmari");
-    strcpy(arr[0].telephone, "0767338591");
-    arr[0].age = 20;
-    arr[0].status = 4;
-    arr[0].date.jour = 20;
-    arr[0].date.mois = 4;
-    arr[0].date.annee = 2024;
-
-    strcpy(arr[1].nom, "ilyas");
-    strcpy(arr[1].prenom, "bahsi");
-    strcpy(arr[1].telephone, "039303930");
-    arr[1].age = 21;
-    arr[1].status = 2;
-    arr[1].date.jour = 21;
-    arr[1].date.mois = 2;
-    arr[1].date.annee = 2002;
-
-    strcpy(arr[2].nom, "mohamed");
-    strcpy(arr[2].prenom, "chnani");
-    strcpy(arr[2].telephone, "94894984948");
-    arr[2].age = 10;
-    arr[2].status = 2;
-    arr[2].date.jour = 21;
-    arr[2].date.mois = 2;
-    arr[2].date.annee = 2025;
-
-    strcpy(arr[3].nom, "jad");
-    strcpy(arr[3].prenom, "jaiti");
-    strcpy(arr[3].telephone, "93839383938");
-    arr[3].age = 20;
-    arr[3].status = 3;
-    arr[3].date.jour = 22;
-    arr[3].date.mois = 2;
-    arr[3].date.annee = 2025;
-
-    strcpy(arr[4].nom, "fatima");
-    strcpy(arr[4].prenom, "bennani");
-    strcpy(arr[4].telephone, "0612345678");
-    arr[4].age = 25;
-    arr[4].status = 1;
-    arr[4].date.jour = 15;
-    arr[4].date.mois = 5;
-    arr[4].date.annee = 2025;
-
-    strcpy(arr[5].nom, "sara");
-    strcpy(arr[5].prenom, "sara");
-    strcpy(arr[5].telephone, "0654321987");
-    arr[5].age = 35;
-    arr[5].status = 4;
-    arr[5].date.jour = 10;
-    arr[5].date.mois = 6;
-    arr[5].date.annee = 2025;
-
-    strcpy(arr[6].nom, "youssef");
-    strcpy(arr[6].prenom, "mouham");
-    strcpy(arr[6].telephone, "0701234567");
-    arr[6].age = 40;
-    arr[6].status = 2;
-    arr[6].date.jour = 5;
-    arr[6].date.mois = 7;
-    arr[6].date.annee = 2025;
-
-    strcpy(arr[7].nom, "khalid");
-    strcpy(arr[7].prenom, "ben");
-    strcpy(arr[7].telephone, "0712345678");
-    arr[7].age = 50;
-    arr[7].status = 3;
-    arr[7].date.jour = 25;
-    arr[7].date.mois = 8;
-    arr[7].date.annee = 2025;
-
-    strcpy(arr[8].nom, "noura");
-    strcpy(arr[8].prenom, "el");
-    strcpy(arr[8].telephone, "0723456789");
-    arr[8].age = 60;
-    arr[8].status = 1;
-    arr[8].date.jour = 30;
-    arr[8].date.mois = 9;
-    arr[8].date.annee = 2025;
-
-    strcpy(arr[9].nom, "amine");
-    strcpy(arr[9].prenom, "zemmari");
-    strcpy(arr[9].telephone, "202920220");
-    arr[9].age = 45;
-    arr[9].status = 2;
-    arr[9].date.jour = 21;
-    arr[9].date.mois = 2;
-    arr[9].date.annee = 2025;
-
     do
     {
         printf("--- Menu ---\n");
@@ -642,4 +552,3 @@ int main()
     } while (choix != 9);
     return 0;
 }
-
